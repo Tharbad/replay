@@ -1,0 +1,60 @@
+sidepane {
+    display: block;
+
+    position: fixed;
+    width: 250px;
+    left: 0;
+    top: 0;
+    height: 100vh;
+
+    background-color: lightgrey;
+}
+
+sidepane header {
+    display: flex;
+
+    flex-direction: row;
+    flex-align: center;
+    align-items: center;
+    justify-content: center;
+
+    height: 70px;
+
+    background-color: grey;
+    color: white;
+
+    font-size: 2em;
+}
+
+sidepane nav ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+sidepane nav ul li {
+    height: 70px;
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: row;
+    flex-align: center;
+    align-items: center;
+}
+
+sidepane nav ul li .right-shit {
+    float: right;
+}
+
+.facaretdown:before {
+  content: "\f0d7";
+}
+.facaretup:before {
+  content: "\f0d8";
+}
+.facaretleft:before {
+  content: "\f0d9";
+}
+.facaretright:before {
+  content: "\f0da";
+}

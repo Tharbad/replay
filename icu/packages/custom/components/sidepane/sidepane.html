@@ -1,0 +1,19 @@
+<header>
+    ICU
+</header>
+<nav>
+    <ul>
+        <li template="for #item of items"
+            [class.active]="item.active"
+            (click)="clicked(item)">
+            <i [class-name]="item.icon"></i>
+            <span>{{item.name}}</span>
+            <i class="fa right-shit"
+               [class.facaretright]="!item.active"
+               [class.facaretdown]="item.active"></i>
+        </li>
+    </ul>
+</nav>
+<p>Display tasks by:</p>
+<!--<display-by-projects></display-by-projects>-->
+<!--<display-by-discussions></display-by-discussions>-->
