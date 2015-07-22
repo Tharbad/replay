@@ -45,7 +45,7 @@ angular.module('mean.icu.ui.taskdetails', [])
 
     $scope.update = function(task) {
         TasksService.update(task).then(function() {
-            $state.reload();
+            $state.reload('main.tasks.byentity');
         });
     }
 

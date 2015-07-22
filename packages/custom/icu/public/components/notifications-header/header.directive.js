@@ -34,11 +34,11 @@ angular.module('mean.icu.ui.notificationsheader', [])
         $scope.createProject = function() {
             var project = {
                 title: 'New project',
-                color: 'blue'
+                color: '00acee'
             };
 
             ProjectsService.create(project).then(function(result) {
-                $state.go('main.tasks.byentity.details', {
+                $state.go('main.tasks.byentity', {
                     id: result._id,
                     entity: $scope.context.entityName,
                     entityId: $scope.context.entityId
