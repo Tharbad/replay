@@ -7,8 +7,10 @@ angular.module('mean.icu.ui.taskdetails', [])
     $scope.tags = tags;
     $scope.projects = projects;
 
-    $scope.task.project = _.find(projects, function (proj) {
-        return proj._id === task.project;
+    TasksService.getStarred().then(function(starred) {
+        $scope.task.star = _(starred).any(function(s) {
+            return s._id === $scope.task._id;
+        });
     });
 
     if (typeof $scope.task.assign === 'string') {
@@ -83,7 +85,7 @@ angular.module('mean.icu.ui.taskdetails', [])
         }
 
         TasksService.update(task).then(function () {
-            $state.reload('main.tasks.byentity');
+            //$state.reload('main.tasks.byentity');
         });
     };
 
