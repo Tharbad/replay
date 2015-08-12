@@ -33,7 +33,7 @@ angular.module('mean.icu.ui.taskdetails', [])
         }).pluck('term').value();
     };
 
-    $scope.$watch('task.description', function (nVal, oVal) {
+    $scope.$watch(['task.description', 'task.title'], function (nVal, oVal) {
         if (nVal !== oVal && oVal) {
             $scope.delayedUpdate($scope.task);
         }
@@ -83,17 +83,12 @@ angular.module('mean.icu.ui.taskdetails', [])
         });
     };
 
-    $scope.copy = function () {
-
-    };
     $scope.update = function (task) {
         if (context.entityName === 'discussion') {
             task.discussion = context.entityId;
         }
 
-        TasksService.update(task).then(function () {
-            $state.reload('main.tasks.byentity');
-        });
+        TasksService.update(task);
     };
 
     $scope.delayedUpdate = _.debounce($scope.update, 500);
