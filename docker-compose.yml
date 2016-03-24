@@ -1,0 +1,36 @@
+# IC assumes that icapi was git clone to ./icapi
+# replay is in ./replay
+version: "2"
+services:
+ icapidb:
+  image: mongo
+  expose: 
+    - "27017"
+  ports:
+    - "27017:27017"
+ icapisearch:
+  image: elasticsearch
+  expose:
+    - "9200"
+ icapi:
+  build: ./icapi
+  environment:
+    - PORT=3003
+  ports:
+    - "3003:3003"
+  depends_on:
+    - icapidb
+    - icapisearch
+ kaltura:
+  image: kaltura/server:latest
+ replay:
+  build: ./replay
+  ports:
+    - "3100:3100"
+  depends_on:
+    - kaltura
+    - icapi
+  expose:
+    - "80"
+    - "443" 
+    - "1935"
